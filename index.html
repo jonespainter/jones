@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional painting and decorating in Amsterdam. Free quotes for homes, apartments, and commercial spaces.">
+    <title>Jones Painter & Decorators</title>
+
+    <!-- CSS FILE -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- FONT AWESOME ICONS -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+
+    <div class="logo">
+        <img src="./assets/logo.png" alt="Jones Painter & Decorators Logo" class="logo-img">
+        <div class="logo-text">
+            <h1>JONES PAINTER</h1>
+            <p>& DECORATORS</p>
+        </div>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="#hero" data-i18n="navHome">Home</a></li>
+            <li><a href="#services" data-i18n="navServices">Services</a></li>
+            <li><a href="#pricing" data-i18n="navPricing">Pricing</a></li>
+            <li><a href="#gallery" data-i18n="navGallery">Gallery</a></li>
+            <li><a href="#color-fan-deck" data-i18n="navColors">Colors</a></li>
+            <li><a href="#reviews" data-i18n="navReviews">Reviews</a></li>
+            <li><a href="#about" data-i18n="navAbout">About</a></li>
+            <li><a href="#contact" data-i18n="navContact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="header-btn">
+        <div class="language-dropdown">
+            <button class="language-btn" onclick="toggleLanguageDropdown()">
+                <i class="fa-solid fa-globe"></i>
+                <span id="currentLang">EN</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="language-menu" id="languageMenu">
+                <a href="#" onclick="setLanguage('en')"><img src="./icons/flag-en.png" alt="" class="lang-flag"> English</a>
+                <a href="#" onclick="setLanguage('nl')"><img src="./icons/flag-nl.png" alt="" class="lang-flag"> Nederlands</a>
+                <a href="#" onclick="setLanguage('fr')"><img src="./icons/flag-fr.png" alt="" class="lang-flag"> Français</a>
+                <a href="#" onclick="setLanguage('de')"><img src="./icons/flag-de.png" alt="" class="lang-flag"> Deutsch</a>
+                <a href="#" onclick="setLanguage('es')"><img src="./icons/flag-es.png" alt="" class="lang-flag"> Español</a>
+                <a href="#" onclick="setLanguage('pt')"><img src="./icons/flag-pt.png" alt="" class="lang-flag"> Português</a>
+                <a href="#" onclick="setLanguage('it')"><img src="./icons/flag-it.png" alt="" class="lang-flag"> Italiano</a>
+                <a href="#" onclick="setLanguage('tr')"><img src="./icons/flag-tr.png" alt="" class="lang-flag"> Türkçe</a>
+                <a href="#" onclick="setLanguage('ar')"><img src="./icons/flag-ar.png" alt="" class="lang-flag"> العربية</a>
+                <a href="#" onclick="setLanguage('ru')"><img src="./icons/flag-ru.png" alt="" class="lang-flag"> Русский</a>
+                <a href="#" onclick="setLanguage('uk')"><img src="./icons/flag-uk.png" alt="" class="lang-flag"> Українська</a>
+            </div>
+        </div>
+        <a href="#quote" data-i18n="getQuote">GET A QUOTE</a>
+        <button class="dark-mode-toggle" onclick="toggleDarkMode()" id="darkModeToggle" aria-label="Toggle dark mode">
+            <i class="fa-solid fa-moon" id="darkModeIcon"></i>
+        </button>
+    </div>
+
+</header>
+
+<!-- ================= HERO SECTION ================= -->
+<section class="hero" id="hero">
+
+    <div class="hero-left">
+
+        <h2 data-i18n="heroTitle">
+            We Bring <span>Color</span><br>
+            to Your World
+        </h2>
+
+        <p data-i18n="heroSubtitle">
+            Professional painting and decorating services
+            for homes, buildings, apartments and commercial spaces.
+        </p>
+
+        <div class="hero-icons">
+
+            <div>
+                <i class="fa-solid fa-shield"></i>
+                <h4 data-i18n="heroQuality">Quality Work</h4>
+            </div>
+
+            <div>
+                <i class="fa-solid fa-user"></i>
+                <h4 data-i18n="heroSkilled">Skilled Painters</h4>
+            </div>
+
+            <div>
+                <i class="fa-solid fa-clock"></i>
+                <h4 data-i18n="heroOnTime">On Time</h4>
+            </div>
+
+        </div>
+
+        <div class="hero-buttons">
+            <a href="#services" class="btn-dark" data-i18n="heroServices">OUR SERVICES</a>
+            <a href="#gallery" class="btn-yellow" data-i18n="heroGallery">VIEW GALLERY</a>
+        </div>
+
+    </div>
+
+    <div class="hero-right">
+
+        <div class="quote-box" id="quote">
+
+            <h3 data-i18n="quoteTitle">Get an Instant Estimate</h3>
+
+            <!-- Interactive Price Estimator -->
+            <div class="estimator-container">
+                <label>
+                    Project Size: <span id="m2Display">50</span> m²
+                </label>
+                <input type="range" id="m2Slider" min="10" max="200" value="50" step="5">
+                
+                <div class="estimate-display">
+                    Est. Price: <span id="priceDisplay">€700 - €1,000</span>
+                </div>
+                <div class="time-display">
+                    Est. Time: <span id="timeDisplay">1 - 2 Days</span>
+                </div>
+            </div>
+
+            <!-- Contact Form Information -->
+            <form id="form">
+                <input type="hidden" name="access_key" value="0d61398e-842b-48e5-8ba8-9a7c1ee5c136">
+                <input type="hidden" name="subject" value="New Quote Request from Jones Paint & Decorators">
+                <input type="hidden" name="from_name" value="Jones Painter Website">
+                <input type="hidden" name="to_email" value="carvalhojones85@gmail.com">
+                
+                <label for="name" class="sr-only">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                
+                <label for="email" class="sr-only">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Email Address" required>
+                
+                <label for="phone" class="sr-only">Phone Number</label>
+                <input type="text" id="phone" name="phone" placeholder="Phone Number" required>
+
+                <!-- Hidden inputs to submit calculated data -->
+                <input type="hidden" id="hiddenM2" name="selected_m2" value="50">
+                <input type="hidden" id="hiddenPrice" name="estimated_price" value="€700 - €1,000">
+
+                <label for="serviceSelect" class="sr-only">Service Type</label>
+                <select id="serviceSelect" name="service_type">
+                    <option value="standard">Standard Wall Painting (Wanden)</option>
+                    <option value="ceiling">Ceiling Painting (Plafonds)</option>
+                    <option value="spray">Latex Spraying (Latex Spuiten)</option>
+                </select>
+
+                <label for="message" class="sr-only">Project Details</label>
+                <textarea id="message" name="message" placeholder="Tell us about your project (e.g. wall condition, number of doors/windows)" required></textarea>
+
+                <button type="submit">SEND ESTIMATE REQUEST</button>
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section class="services" id="services">
+
+    <h2 data-i18n="servicesTitle">Our Services</h2>
+    <p data-i18n="servicesSubtitle">We bring color to your world</p>
+
+    <div class="service-card">
+        <i class="fa-solid fa-house"></i>
+        <h3 data-i18n="serviceHomes">Homes</h3>
+        <p data-i18n="serviceHomesDesc">Interior & exterior painting.</p>
+    </div>
+
+    <div class="service-card">
+        <i class="fa-solid fa-building"></i>
+        <h3 data-i18n="serviceBuildings">Buildings</h3>
+        <p data-i18n="serviceBuildingsDesc">Professional painting for buildings.</p>
+    </div>
+
+    <div class="service-card">
+        <i class="fa-solid fa-city"></i>
+        <h3 data-i18n="serviceApartments">Apartments</h3>
+        <p data-i18n="serviceApartmentsDesc">Fresh colors for apartments.</p>
+    </div>
+
+    <div class="service-card">
+        <i class="fa-solid fa-store"></i>
+        <h3 data-i18n="serviceCommercial">Commercial</h3>
+        <p data-i18n="serviceCommercialDesc">Painting for businesses.</p>
+    </div>
+
+    <div class="service-card">
+        <i class="fa-solid fa-paint-roller"></i>
+        <h3 data-i18n="serviceDecorating">Decorating</h3>
+        <p data-i18n="serviceDecoratingDesc">Wallpaper & decorative finishes.</p>
+    </div>
+
+</section>
+
+<!-- ================= PRICING & RATES ================= -->
+<section class="pricing-section" id="pricing">
+
+    <h2 data-i18n="pricingTitle">Indicative Pricing & Timelines</h2>
+    <p data-i18n="pricingSubtitle">Transparent m² rates and project durations for Amsterdam & surrounding areas.</p>
+
+    <!-- 🇳🇱 DUTCH BTW TAX ADVANTAGE NOTICE -->
+    <div class="btw-notice">
+        <p>
+            <i class="fa-solid fa-percent"></i> BTW Voordeel (9% VAT Discount):
+        </p>
+        <p>
+            Is uw woning ouder dan 2 jaar? Dan betaalt u slechts <strong>9% BTW</strong> in plaats van 21% op al ons binnen- en buitenschilderwerk!
+            <em>(Is your home older than 2 years? You qualify for the reduced 9% Dutch tax rate on both labor and materials!)</em>
+        </p>
+    </div>
+
+    <!-- PRICING TIERS CONTAINER -->
+    <div class="pricing-container">
+
+        <!-- CARD 1: BY SQUARE METER -->
+        <div class="price-card">
+            <i class="fa-solid fa-ruler-combined"></i>
+            <h3>By Square Meter (m²)</h3>
+            <ul>
+                <li><strong>Wanden sausen (Walls):</strong> €8 - €17 / m²</li>
+                <li><strong>Plafonds (Ceilings):</strong> €10 - €20 / m²</li>
+                <li><strong>Latex Spuiten (Spraying):</strong> €7 - €12 / m²</li>
+                <li class="list-divider" aria-hidden="true"><hr></li>
+                <li>📦 <strong>25 m²:</strong> €350 - €500 <small>(1 Day)</small></li>
+                <li>📦 <strong>50 m²:</strong> €700 - €1,000 <small>(1-2 Days)</small></li>
+                <li>📦 <strong>100 m²:</strong> €1,400 - €2,000 <small>(2-3 Days)</small></li>
+            </ul>
+        </div>
+
+        <!-- CARD 2: BY ROOM SIZE DEFAULTS -->
+        <div class="price-card">
+            <i class="fa-solid fa-door-open"></i>
+            <h3>Standard Room Sizes</h3>
+            <ul>
+                <li><strong>Small / Box Room (~5m² floor):</strong></li>
+                <li>€200 - €450 | <i class="fa-solid fa-clock"></i> 1 Day</li>
+                <li><strong>Medium Room (~12m² floor):</strong></li>
+                <li>€250 - €600 | <i class="fa-solid fa-clock"></i> 1.5 Days</li>
+                <li><strong>Large Living Room (~20m² floor):</strong></li>
+                <li>€350 - €900 | <i class="fa-solid fa-clock"></i> 2 Days</li>
+            </ul>
+        </div>
+
+        <!-- CARD 3: BY FULL PROPERTY LAYOUT -->
+        <div class="price-card">
+            <i class="fa-solid fa-house-chimney"></i>
+            <h3>Whole Property Layouts</h3>
+            <ul>
+                <li><strong>1-Bedroom Apartment:</strong></li>
+                <li>€1,500 - €2,500 | 3-4 Days</li>
+                <li><strong>2-Bedroom House:</strong></li>
+                <li>€2,200 - €3,600 | 4-6 Days</li>
+                <li><strong>3-Bedroom Family Home:</strong></li>
+                <li>€3,500 - €5,500 | 7-10 Days</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <p class="pricing-disclaimer">*Prices are approximations excluding VAT (BTW). Final quote depends on surface condition, woodwork trims, and custom material selections.</p>
+
+</section>
+
+<!-- ================= ABOUT US ================= -->
+<section class="about" id="about">
+
+    <h2 data-i18n="aboutTitle">About Us</h2>
+    <p data-i18n="aboutSubtitle">Professional Painting & Decorating Services in Amsterdam</p>
+
+    <div class="about-content">
+        <div class="about-text">
+            <h3>Our Story</h3>
+            <p>
+                Jones Painter & Decorators has been serving Amsterdam and surrounding areas for over 6 years. We are a family-owned business dedicated to transforming homes and commercial spaces with exceptional painting and decorating services.
+            </p>
+            <p>
+                Our team of skilled painters takes pride in every project, from small residential rooms to large commercial buildings. We use only premium quality paints and materials to ensure lasting results that exceed our clients' expectations.
+            </p>
+            <h3>Our Mission</h3>
+            <p>
+                To provide outstanding painting and decorating services that enhance the beauty and value of our clients' properties while maintaining the highest standards of professionalism, quality, and customer satisfaction.
+            </p>
+            <h3>Why Choose Us?</h3>
+            <ul>
+                <li>✅ Over 6 years of experience</li>
+                <li>✅ Premium quality materials</li>
+                <li>✅ Satisfaction guaranteed</li>
+                <li>✅ Free quotes and consultations</li>
+                <li>✅ Multi-language support (Dutch, Portuguese, English)</li>
+            </ul>
+        </div>
+        <div class="about-stats">
+            <div class="stat-item">
+                <h3>500+</h3>
+                <p>Projects Completed</p>
+            </div>
+            <div class="stat-item">
+                <h3>6+</h3>
+                <p>Years Experience</p>
+            </div>
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>Client Satisfaction</p>
+            </div>
+            <div class="stat-item">
+                <h3>24/7</h3>
+                <p>Support Available</p>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section class="gallery" id="gallery">
+
+    <h2 data-i18n="galleryTitle">Our Work Gallery</h2>
+    <p data-i18n="gallerySubtitle">We bring color to your world</p>
+
+    <div class="gallery-grid">
+        <div class="gallery-item" role="button" tabindex="0" data-src="./images/before1.jpg" data-caption="Before">
+            <img src="./images/before1.jpg" alt="Before Painting" class="gallery-img">
+            <div class="gallery-caption">Before</div>
+        </div>
+        <div class="gallery-item" role="button" tabindex="0" data-src="./images/after1.jpg" data-caption="After">
+            <img src="./images/after1.jpg" alt="After Painting" class="gallery-img">
+            <div class="gallery-caption">After</div>
+        </div>
+        <div class="gallery-item" role="button" tabindex="0" data-src="./images/project2.jpg" data-caption="Project 1">
+            <img src="./images/project2.jpg" alt="Painting Project" class="gallery-img">
+            <div class="gallery-caption">Project 1</div>
+        </div>
+        <div class="gallery-item" role="button" tabindex="0" data-src="./images/project3.jpg" data-caption="Project 2">
+            <img src="./images/project3.jpg" alt="Painting Project" class="gallery-img">
+            <div class="gallery-caption">Project 2</div>
+        </div>
+        <div class="gallery-item" role="button" tabindex="0" data-src="./images/project4.jpg" data-caption="Project 3">
+            <img src="./images/project4.jpg" alt="Painting Project" class="gallery-img">
+            <div class="gallery-caption">Project 3</div>
+        </div>
+        <div class="gallery-item" role="button" tabindex="0" data-src="./images/gallery1.jpg" data-caption="Project 4">
+            <img src="./images/gallery1.jpg" alt="Painting Project" class="gallery-img">
+            <div class="gallery-caption">Project 4</div>
+        </div>
+        <div class="gallery-item" role="button" tabindex="0" data-src="./images/gallery2.jpg" data-caption="Project 5">
+            <img src="./images/gallery2.jpg" alt="Painting Project" class="gallery-img">
+            <div class="gallery-caption">Project 5</div>
+        </div>
+        <div class="gallery-item" role="button" tabindex="0" data-src="./images/gallery4.jpg" data-caption="Project 6">
+            <img src="./images/gallery4.jpg" alt="Painting Project" class="gallery-img">
+            <div class="gallery-caption">Project 6</div>
+        </div>
+        <div class="gallery-item" role="button" tabindex="0" data-src="./images/gallery5.jpg" data-caption="Project 7">
+            <img src="./images/gallery5.jpg" alt="Painting Project" class="gallery-img">
+            <div class="gallery-caption">Project 7</div>
+			</div>
+		<div class="gallery-item" role="button" tabindex="0" data-src="./images/facebook1.jpg" data-caption="Project 8">
+            <img src="./images/facebook1.jpg" alt="Painting Project" class="gallery-img">
+            <div class="gallery-caption">Project 8</div>
+            </div>
+		<div class="gallery-item" role="button" tabindex="0" data-src="./images/facebook2.jpg" data-caption="Project 8">
+            <img src="./images/facebook2.jpg" alt="Painting Project" class="gallery-img">
+            <div class="gallery-caption">Project 8</div>
+            </div>
+	    <div class="gallery-item" role="button" tabindex="0" data-src="./images/facebook3.jpg" data-caption="Project 8">
+            <img src="./images/facebook3.jpg" alt="Painting Project" class="gallery-img">
+            <div class="gallery-caption">Project 8</div>
+	        </div>
+        <div class="gallery-item" role="button" tabindex="0" data-src="./images/gallery3.jpg" data-caption="Project 1">
+            <img src="./images/gallery3.jpg" alt="Painting Project" class="gallery-img">
+            <div class="gallery-caption">Project 1</div>
+            </div>			
+        <div class="gallery-item" role="button" tabindex="0" data-src="./images/gallery6.jpg" data-caption="Project 6">
+            <img src="./images/gallery6.jpg" alt="Painting Project" class="gallery-img">
+            <div class="gallery-caption">Project 6</div>
+	    </div>
+		<div class="gallery-item" role="button" tabindex="0" data-src="./images/gallery7.jpg" data-caption="Project 6">
+            <img src="./images/gallery7.jpg" alt="Painting Project" class="gallery-img">
+            <div class="gallery-caption">Project 6</div>
+		</div>
+		
+</section>
+
+<!-- ================= BEFORE & AFTER SLIDER ================= -->
+<section class="before-after-section">
+
+    <h2 data-i18n="baTitle">Before & After</h2>
+    <p data-i18n="baSubtitle">Drag the slider to see the transformation</p>
+
+    <div class="ba-slider-container">
+        <div class="ba-slider" id="baSlider">
+            <div class="ba-image ba-before">
+                <img src="./images/before1.jpg" alt="Before">
+                <span class="ba-label">Before</span>
+            </div>
+            <div class="ba-image ba-after" id="baAfter">
+                <img src="./images/after1.jpg" alt="After" id="afterImage">
+                <span class="ba-label">After</span>
+            </div>
+            <div class="ba-handle" id="baHandle">
+                <div class="ba-handle-line"></div>
+                <div class="ba-handle-circle">
+                    <i class="fa-solid fa-arrows-left-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- ================= COLOR FAN DECK ================= -->
+<section class="color-fan-deck" id="color-fan-deck">
+
+    <h2>Color Fan Deck</h2>
+    <p>Explore our extensive collection of premium paint colors</p>
+    
+    <div class="flip-book-container">
+        <div class="flip-book" id="flipBook">
+            <!-- Color pages will be generated by JavaScript -->
+        </div>
+        <div class="flip-controls">
+            <button class="flip-btn" id="prevBtn">← Previous</button>
+            <span class="page-indicator">Page <span id="currentPage">1</span> of <span id="totalPages">1</span></span>
+            <button class="flip-btn" id="nextBtn">Next →</button>
+        </div>
+    </div>
+
+</section>
+
+<!-- ================= TIKTOK VIDEOS ================= -->
+<section class="tiktok-section">
+
+    <h2 data-i18n="tiktokTitle">Follow Us on TikTok</h2>
+    <p data-i18n="tiktokSubtitle">Watch our painting projects and tips</p>
+
+    <div class="tiktok-grid">
+        <div class="tiktok-embed">
+            <video controls>
+                <source src="./videos/video-1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="tiktok-embed">
+            <video controls>
+                <source src="./videos/video-2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="tiktok-embed">
+            <video controls>
+                <source src="./videos/video-3.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="tiktok-embed">
+            <video controls>
+                <source src="./videos/video-4.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="tiktok-embed">
+            <video controls>
+                <source src="./videos/video-5.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <a href="https://www.tiktok.com/@jonespaintdecorators" target="_blank" rel="noopener noreferrer" class="tiktok-link">
+        <i class="fab fa-tiktok"></i> Follow @jonespaintdecorators
+    </a>
+
+</section>
+
+<!-- ================= REVIEWS ================= -->
+<section class="reviews" id="reviews">
+
+    <h2 data-i18n="reviewsTitle">What Our Clients Say</h2>
+
+    <div class="social-icons">
+        <a href="https://www.facebook.com/jonespaintdecorators" target="_blank" rel="noopener noreferrer">
+            <img src="./icons/facebook.png" alt="Facebook" class="social-icon-img">
+        </a>
+        <a href="https://www.instagram.com/jonespaintdecorators" target="_blank" rel="noopener noreferrer">
+            <img src="./icons/instagram.png" alt="Instagram" class="social-icon-img">
+        </a>
+        <a href="https://x.com/jonespaintdecorators" target="_blank" rel="noopener noreferrer">
+            <img src="./icons/x.png" alt="X (Twitter)" class="social-icon-img">
+        </a>
+        <a href="https://www.tiktok.com/@jonespaintdecorators" target="_blank" rel="noopener noreferrer">
+            <img src="./icons/tiktok.png" alt="TikTok" class="social-icon-img">
+        </a>
+        <a href="https://www.youtube.com/@jonespaintdecorators" target="_blank" rel="noopener noreferrer">
+            <img src="./icons/youtube.png" alt="YouTube" class="social-icon-img">
+        </a>
+        <a href="https://wa.me/31684258077" target="_blank" rel="noopener noreferrer">
+            <img src="./icons/whatsapp.png" alt="WhatsApp" class="social-icon-img">
+        </a>
+        <a href="https://t.me/+31684258077" target="_blank" rel="noopener noreferrer">
+            <img src="./icons/telegram.png" alt="Telegram" class="social-icon-img">
+        </a>
+        <a href="https://www.pinterest.com/jonespaintdecorators" target="_blank" rel="noopener noreferrer">
+            <img src="./icons/pinterest.png" alt="Pinterest" class="social-icon-img">
+        </a>
+        <a href="https://www.threads.net/@jonespaintdecorators" target="_blank" rel="noopener noreferrer">
+            <img src="./icons/threads.png" alt="Threads" class="social-icon-img">
+        </a>
+        <a href="https://www.snapchat.com/add/jonespaintdecorators" target="_blank" rel="noopener noreferrer">
+            <img src="./icons/snapchat.png" alt="Snapchat" class="social-icon-img">
+        </a>
+    </div>
+
+    <div class="review-container">
+        <button class="carousel-btn prev-btn" onclick="moveCarousel(-1)">&#10094;</button>
+        <div class="carousel-track" id="reviewCarousel">
+            <div class="review-card">
+                <h3>Sarah J.</h3>
+                <p>Amazing work! Very professional and fast.</p>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+            <div class="review-card">
+                <h3>Office Renovation</h3>
+                <p>They transformed our office space beautifully.</p>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+            <div class="review-card">
+                <h3>Instagram Review</h3>
+                <p>Attention to detail was incredible.</p>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+            <div class="review-card">
+                <h3>Michael T.</h3>
+                <p>Best painters in Amsterdam! Highly recommend.</p>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+            <div class="review-card">
+                <h3>Emma W.</h3>
+                <p>Great communication and excellent results.</p>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+        </div>
+        <button class="carousel-btn next-btn" onclick="moveCarousel(1)">&#10095;</button>
+    </div>
+
+    <!-- Google Reviews Widget -->
+    <div class="google-reviews-widget">
+        <div class="google-rating">
+            <div class="google-logo">
+                <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google">
+            </div>
+            <div class="rating-score">4.9</div>
+            <div class="rating-stars">⭐⭐⭐⭐⭐</div>
+            <div class="review-count">Based on 127 reviews</div>
+        </div>
+        <a href="https://search.google.com/local/writereview" target="_blank" class="write-review-btn">
+            Write a Review
+        </a>
+    </div>
+
+</section>
+
+<!-- ================= CHAT BOX ================= -->
+<div class="chat-box" id="chatBox">
+
+    <div class="chat-header">
+        <span>Chat With Us</span>
+        <div class="chat-controls">
+            <button class="chat-control-btn" onclick="toggleChatSize()" id="chatToggleBtn">
+                <i class="fa-solid fa-minus" id="chatToggleIcon"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="chat-body" id="chatBody">
+
+        <div class="bot-message">
+            Hi 👋 How can we help you today?
+        </div>
+
+    </div>
+
+    <div class="chat-footer" id="chatFooter">
+        <input type="text" id="chatInput" placeholder="Type message...">
+        <button onclick="sendMessage()">
+            <i class="fa-solid fa-paper-plane"></i>
+        </button>
+    </div>
+
+</div>
+
+<!-- ================= WHATSAPP WIDGET ================= -->
+<a href="https://wa.me/31684258077" class="whatsapp-widget" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- ================= TELEGRAM WIDGET ================= -->
+<a href="https://t.me/+31684258077" class="telegram-widget" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-telegram"></i>
+</a>
+
+<!-- ================= FOOTER ================= -->
+<footer id="contact">
+
+    <div class="footer-logo">
+        <h2>JONES PAINTER & DECORATORS</h2>
+        <p data-i18n="footerSlogan">We Paint. You Love.</p>
+        
+        <h3 data-i18n="footerQuickLinks">Quick Links</h3>
+        <ul>
+            <li><a href="#" data-i18n="navHome">Home</a></li>
+            <li><a href="#services" data-i18n="navServices">Services</a></li>
+            <li><a href="#gallery" data-i18n="navGallery">Gallery</a></li>
+            <li><a href="#reviews" data-i18n="navReviews">Reviews</a></li>
+            <li><a href="#contact" data-i18n="navContact">Contact</a></li>
+        </ul>
+        
+        <h3 data-i18n="footerContact">Contact</h3>
+        <p><a href="tel:+31684258077">+31684258077</a></p>
+        <p><a href="mailto:carvalhojones85@gmail.com">carvalhojones85@gmail.com</a></p>
+        <p>Amsterdam, Netherlands</p>
+    </div>
+
+    <div class="map-container">
+        <a href="https://www.google.com/maps/search/?api=1&query=Amsterdam+Netherlands" target="_blank" rel="noopener noreferrer" class="map-link">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2436.5!2d4.9!3d52.37!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTLCsDIyJzEyLjAiTiA0wrA1NCcwMC4wIkU!5e0!3m2!1sen!2snl!4v1234567890&output=embed"
+                width="100%"
+                height="400"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=Amsterdam+Netherlands" target="_blank" rel="noopener noreferrer" class="directions-btn">Get Directions</a>
+    </div>
+
+</footer>
+
+<!-- ================= IMAGE LIGHTBOX ================= -->
+<div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+    <figure class="lightbox-figure">
+        <img id="lightboxImg" src="" alt="">
+        <figcaption id="lightboxCaption"></figcaption>
+    </figure>
+</div>
+
+<!-- JAVASCRIPT FILE -->
+<script src="script.js"></script>
+
+</body>
+</html>
